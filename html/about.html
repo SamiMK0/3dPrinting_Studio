@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - 3D PrintStudio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+
+    rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <style>
+    /* Reset & Base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+            --primary-foregroundd: 60 10% 98%;
+      --secondaryy: 220 15% 18%;
+
+      --primaryy: 25 95% 55%;
+      --borderr: 220 15% 20%;
+      --background: #0a0f1a;
+      --foreground: #f8fafc;
+      --card: #111827;
+      --card-foreground: #f8fafc;
+      --primary: #f97316;
+      --primary-foreground: #ffffff;
+      --secondary: #1e293b;
+      --muted: #1e293b;
+      --muted-foreground: #94a3b8;
+      --border: #1e3a5f;
+      --radius: 0.75rem;
+      --muted-foregroundd: 220 10% 60%;
+      
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Glass Card */
+    .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(30, 58, 95, 0.5);
+      border-radius: var(--radius);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: white;
+      box-shadow: 0 0 40px rgba(249, 115, 22, 0.3);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--foreground);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Animations */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slide-in-left {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slide-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scale-in {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.6s ease-out forwards;
+    }
+
+    .animate-slide-in-left {
+      animation: slide-in-left 0.6s ease-out forwards;
+    }
+
+    .animate-slide-in-right {
+      animation: slide-in-right 0.6s ease-out forwards;
+    }
+
+    .animate-scale-in {
+      animation: scale-in 0.5s ease-out forwards;
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    .delay-200 {
+      animation-delay: 200ms;
+    }
+
+    .delay-400 {
+      animation-delay: 400ms;
+    }
+
+    .delay-600 {
+      animation-delay: 600ms;
+    }
+
+    .hidden {
+      opacity: 0;
+    }
+
+  
+    /* Particles container covers full page */
+.particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1; /* behind all content */
+  background: #0a0f1a; /* dark background, change as needed */
+}
+
+/* Each particle */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  background: #f97316; /* primary color */
+  pointer-events: none;
+  animation-name: floatParticle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Particle float animation */
+@keyframes floatParticle {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-30px) translateX(20px) scale(1.3); opacity: 0.6; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+}
+
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center top,
+    hsla(25, 95%, 55%, 0.15) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .text-gradient {
+      background: linear-gradient(270deg,
+          #ff6b00,
+          #ff9500,
+          #e65c00,
+          #ff6b00);
+      background-size: 400% 400%;
+      animation: gradientMove 6s ease infinite;
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse-glow 2s infinite;
+    }
+
+    .hero-badge-text {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 128px;
+      background: linear-gradient(to top, var(--background), transparent);
+    }
+
+    /* Story Section */
+    .story {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .story-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .story-image-wrapper {
+      position: relative;
+    }
+
+    .story-image {
+      aspect-ratio: 1;
+      border-radius: 1.5rem;
+      overflow: hidden;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 15, 26, 0.8), transparent, transparent);
+    }
+
+    .story-stats-card {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.7));
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .story-stats-card .number {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .story-stats-card .label {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(249, 115, 22, 0.1);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      width: fit-content;
+    }
+
+    .section-badge span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .story-content h2 {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 700;
+    }
+
+    .story-content p {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      line-height: 1.8;
+    }
+
+    .story-numbers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .story-numbers .number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .story-numbers .label {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    /* Mission Section */
+    .mission {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, var(--background), rgba(10, 15, 26, 0.95));
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-top: 1.5rem;
+    }
+
+    .mission-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .mission-card {
+      position: relative;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      transition: all 0.5s;
+    }
+
+    .mission-card:hover {
+      border-color: rgba(249, 115, 22, 0.5);
+    }
+
+    .mission-card-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .mission-card:hover .mission-card-bg {
+      opacity: 1;
+    }
+
+    .mission-card-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .mission-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 40px rgba(249, 115, 22, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .mission-card:hover .mission-icon {
+      transform: scale(1.1);
+    }
+
+    .mission-icon svg {
+      width: 28px;
+      height: 28px;
+      color: white;
+    }
+
+    .mission-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .mission-card p {
+      color: var(--muted-foreground);
+      line-height: 1.7;
+    }
+
+    /* Team Section */
+    .team {
+      padding: 6rem 0;
+    }
+
+    .team-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+
+    .team-header h2 {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 700;
+      margin: 1.5rem 0;
+    }
+
+    .team-header p {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-card {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      transition: all 0.5s;
+    }
+
+    .team-card:hover {
+      border-color: rgba(249, 115, 22, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .team-image {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+
+    .team-card:hover .team-image img {
+      transform: scale(1.1);
+    }
+
+    .team-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--background), rgba(10, 15, 26, 0.2), transparent);
+    }
+
+    .team-socials {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.75rem;
+      transform: translateY(16px);
+      opacity: 0;
+      transition: all 0.5s;
+    }
+
+    .team-card:hover .team-socials {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .team-social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(10, 15, 26, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      color: var(--foreground);
+      transition: all 0.3s;
+    }
+
+    .team-social-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .team-info {
+      padding: 1.5rem;
+    }
+
+    .team-info h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-info .role {
+      color: var(--primary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .team-info .bio {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+    }
+
+    /* Why Choose Section */
+    .why-choose {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, var(--background), rgba(10, 15, 26, 0.95));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-choose-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background-image: radial-gradient(circle at 1px 1px, var(--primary) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+
+    .why-choose-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .why-choose-header h2 {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 700;
+      margin: 1.5rem 0;
+    }
+
+    .why-choose-header p {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .feature-card {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(249, 115, 22, 0.5);
+    }
+
+    .feature-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 0.75rem;
+      background: rgba(249, 115, 22, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover .feature-icon {
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      transform: scale(1.1);
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    .feature-card:hover .feature-icon svg {
+      color: white;
+    }
+
+    .feature-content h3 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .feature-content p {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 6rem 0;
+    }
+
+    .cta-card {
+      position: relative;
+      padding: 4rem;
+      border-radius: 1.5rem;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent, rgba(249, 115, 22, 0.05));
+    }
+
+    .cta-glow-1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 256px;
+      height: 256px;
+      background: rgba(249, 115, 22, 0.2);
+      border-radius: 50%;
+      filter: blur(60px);
+      transform: translate(50%, -50%);
+    }
+
+    .cta-glow-2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 192px;
+      height: 192px;
+      background: rgba(249, 115, 22, 0.1);
+      border-radius: 50%;
+      filter: blur(40px);
+      transform: translate(-50%, 50%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-content h2 {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-content p {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* Footer */
+    /* Footer */
+    .footer {
+      border-top: 1px solid hsl(var(--borderr));
+      padding: 4rem 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand p {
+      color: hsl(var(--muted-foregroundd));
+      font-size: 0.9375rem;
+      margin-top: 1rem;
+      max-width: 20rem;
+    }
+
+    .footer-column h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: hsl(var(--muted-foregroundd));
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: hsl(var(--primaryy));
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid hsl(var(--borderr));
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      color: hsl(var(--muted-foregroundd));
+      font-size: 0.875rem;
+    }
+
+/* Social Links */
+    .social-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid hsla(220, 15%, 20%, 0.5);
+    }
+
+    .social-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: hsl(var(--muted-foregroundd));
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      background: hsl(var(--secondaryy));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: hsl(var(--muted-foregroundd));
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-link:hover {
+      background: hsl(var(--primaryy));
+      color: hsl(var(--primary-foregroundd));
+    }
+
+    .social-link svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    /* SVG Icons */
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="particles" class="particles-container"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">3D Studio</div>
+    <ul class="nav-links">
+      <li><a href="/html/index.html">Home</a></li>
+      <li><a href="/html/products.html">Products</a></li>
+      <li><a href="/html/services.html">Services</a></li>
+      <li><a href="/html/about.html">About</a></li>
+      <li><a href="/html/contact.html">Contact</a></li>
+    </ul>
+<div class="cart" onclick="location.href='/html/cart.html'">
+  <i class="fa-solid fa-cart-shopping"></i>
+</div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    
+
+    <div class="container hero-content">
+      <div class="hero-badge animate-fade-in-up">
+        <div class="hero-badge-dot"></div>
+        <span class="hero-badge-text">About Us</span>
+      </div>
+
+      <h1 class="animate-fade-in-up delay-200">
+        Crafting the Future,<br>
+        <span class="text-gradient">One Print at a Time</span>
+      </h1>
+
+      <p class="animate-fade-in-up delay-400">
+        We're a passionate team of innovators, designers, and engineers dedicated to
+        bringing your ideas to life through cutting-edge 3D printing technology.
+      </p>
+    </div>
+
+    <div class="hero-fade"></div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image-wrapper hidden" id="story-image">
+          <div class="story-image glass-card">
+            <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=600&h=600&fit=crop"
+              alt="3D Printing Workshop">
+            <div class="story-image-overlay"></div>
+          </div>
+          <div class="story-stats-card glass-card">
+            <div class="number">5+</div>
+            <div class="label">Years of Innovation</div>
+          </div>
+        </div>
+
+        <div class="story-content hidden" id="story-content">
+          <div class="section-badge">
+            <span>Our Story</span>
+          </div>
+
+          <h2>From Passion to <span class="text-gradient">Precision</span></h2>
+
+          <p>
+            Founded in 2019, 3D PrintStudio began as a small workshop with a big dream:
+            to make professional 3D printing accessible to everyone. What started as a
+            garage operation has grown into a state-of-the-art facility serving clients worldwide.
+          </p>
+
+          <p>
+            Our journey has been driven by a simple belief – that great ideas deserve
+            to be brought to life. Whether it's a prototype for a startup, a custom gift
+            for a loved one, or an industrial component, we treat every project with the
+            same level of care and precision.
+          </p>
+
+          <div class="story-numbers">
+            <div>
+              <div class="number">10,000+</div>
+              <div class="label">Projects Completed</div>
+            </div>
+            <div>
+              <div class="number">500+</div>
+              <div class="label">Happy Clients</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge hidden" id="mission-badge">
+          <span>What Drives Us</span>
+        </div>
+        <h2 class="hidden" id="mission-title">Mission, Vision & <span class="text-gradient">Values</span></h2>
+      </div>
+
+      <div class="mission-cards">
+        <div class="mission-card glass-card hidden" id="mission-card-1">
+          <div class="mission-card-bg"
+            style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.05));"></div>
+          <div class="mission-card-content">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <h3>Our Mission</h3>
+            <p>To democratize access to professional 3D printing, empowering creators, innovators, and businesses to
+              transform their ideas into tangible reality with uncompromising quality.</p>
+          </div>
+        </div>
+
+        <div class="mission-card glass-card hidden" id="mission-card-2">
+          <div class="mission-card-bg"
+            style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(249, 115, 22, 0.05));"></div>
+          <div class="mission-card-content">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <h3>Our Vision</h3>
+            <p>To be the world's most trusted partner in additive manufacturing, known for innovation, sustainability,
+              and an unwavering commitment to customer success.</p>
+          </div>
+        </div>
+
+        <div class="mission-card glass-card hidden" id="mission-card-3">
+          <div class="mission-card-bg"
+            style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05));"></div>
+          <div class="mission-card-content">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="9" y1="18" x2="15" y2="18" />
+                <line x1="10" y1="22" x2="14" y2="22" />
+                <path
+                  d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
+              </svg>
+            </div>
+            <h3>Our Values</h3>
+            <p>Innovation drives us. Quality defines us. Customer satisfaction inspires us. We believe in pushing
+              boundaries while maintaining the highest standards of craftsmanship.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team">
+    <div class="container">
+      <div class="team-header">
+        <div class="section-badge hidden" id="team-badge">
+          <span>Our Team</span>
+        </div>
+        <h2 class="hidden" id="team-title">Meet the <span class="text-gradient">Experts</span></h2>
+        <p class="hidden" id="team-desc">Our diverse team brings together decades of experience in engineering, design,
+          and customer service to deliver exceptional results.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card glass-card hidden" id="team-card-1">
+          <div class="team-image">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+              alt="Alex Chen">
+            <div class="team-image-overlay"></div>
+            <div class="team-socials">
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </button>
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Alex Chen</h3>
+            <p class="role">Founder & CEO</p>
+            <p class="bio">Mechanical engineer turned entrepreneur with 15 years in additive manufacturing.</p>
+          </div>
+        </div>
+
+        <div class="team-card glass-card hidden" id="team-card-2">
+          <div class="team-image">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face"
+              alt="Sarah Mitchell">
+            <div class="team-image-overlay"></div>
+            <div class="team-socials">
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </button>
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Sarah Mitchell</h3>
+            <p class="role">Head of Design</p>
+            <p class="bio">Award-winning industrial designer specializing in product development.</p>
+          </div>
+        </div>
+
+        <div class="team-card glass-card hidden" id="team-card-3">
+          <div class="team-image">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+              alt="Marcus Johnson">
+            <div class="team-image-overlay"></div>
+            <div class="team-socials">
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </button>
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Marcus Johnson</h3>
+            <p class="role">Technical Director</p>
+            <p class="bio">Expert in materials science and advanced printing technologies.</p>
+          </div>
+        </div>
+
+        <div class="team-card glass-card hidden" id="team-card-4">
+          <div class="team-image">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face"
+              alt="Emily Wang">
+            <div class="team-image-overlay"></div>
+            <div class="team-socials">
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </button>
+              <button class="team-social-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Emily Wang</h3>
+            <p class="role">Customer Success Lead</p>
+            <p class="bio">Dedicated to ensuring every client's vision becomes reality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Section -->
+  <section class="why-choose">
+    <div class="why-choose-pattern"></div>
+
+    <div class="container">
+      <div class="why-choose-header">
+        <div class="section-badge hidden" id="why-badge">
+          <span>Why Choose Us</span>
+        </div>
+        <h2 class="hidden" id="why-title">What Sets Us <span class="text-gradient">Apart</span></h2>
+        <p class="hidden" id="why-desc">We combine passion with precision to deliver results that exceed expectations.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card glass-card hidden" id="feature-1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+          </div>
+          <div class="feature-content">
+            <h3>Cutting-Edge Technology</h3>
+            <p>State-of-the-art printers and materials for superior results.</p>
+          </div>
+        </div>
+
+        <div class="feature-card glass-card hidden" id="feature-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div class="feature-content">
+            <h3>Quality Guaranteed</h3>
+            <p>Rigorous quality control on every single project we deliver.</p>
+          </div>
+        </div>
+
+        <div class="feature-card glass-card hidden" id="feature-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <div class="feature-content">
+            <h3>Fast Turnaround</h3>
+            <p>Quick production times without compromising on quality.</p>
+          </div>
+        </div>
+
+        <div class="feature-card glass-card hidden" id="feature-4">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+            </svg>
+          </div>
+          <div class="feature-content">
+            <h3>Industry Expertise</h3>
+            <p>Years of experience across diverse industries and applications.</p>
+          </div>
+        </div>
+
+        <div class="feature-card glass-card hidden" id="feature-5">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+              <path
+                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+            </svg>
+          </div>
+          <div class="feature-content">
+            <h3>Dedicated Support</h3>
+            <p>Personal guidance from concept to final product delivery.</p>
+          </div>
+        </div>
+
+        <div class="feature-card glass-card hidden" id="feature-6">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10" />
+              <polyline points="1 20 1 14 7 14" />
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+            </svg>
+          </div>
+          <div class="feature-content">
+            <h3>Eco-Friendly</h3>
+            <p>Sustainable practices and recyclable materials when possible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card glass-card">
+        <div class="cta-bg"></div>
+        <div class="cta-glow-1"></div>
+        <div class="cta-glow-2"></div>
+
+        <div class="cta-content">
+          <h2>Ready to Bring Your <span class="text-gradient">Ideas to Life?</span></h2>
+          <p>Whether you have a detailed design or just a concept, our team is here to help you create something
+            extraordinary. Let's start a conversation.</p>
+
+          <div class="cta-buttons">
+            <button class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+              Start a Conversation
+            </button>
+            <a href="/products" class="btn btn-outline">
+              Browse Products
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <div class="logo-icon bg-gradient-primary font-display">3D</div>
+            <span class="logo-text font-display">Print<span>Studio</span></span>
+          </a>
+          <p>Transforming ideas into reality through precision 3D printing and innovative design solutions.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">Rapid Prototyping</a></li>
+            <li><a href="#">Custom Design</a></li>
+            <li><a href="#">Small Batch Production</a></li>
+            <li><a href="#">3D Scanning</a></li>
+            <li><a href="#">Consultation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 3D PrintStudio. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    
+const particlesContainer = document.getElementById('particles');
+const particleCount = 50; // adjust as needed
+
+for (let i = 0; i < particleCount; i++) {
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+
+  // Random position
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.top = Math.random() * 100 + '%';
+
+  // Random size
+  const size = Math.random() * 4 + 2;
+  particle.style.width = size + 'px';
+  particle.style.height = size + 'px';
+
+  // Random animation duration and delay
+  particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
+  particle.style.animationDelay = (Math.random() * 6) + 's';
+
+  // Append to container
+  particlesContainer.appendChild(particle);
+}
+
+
+
+    // Intersection Observer for scroll animations
+    document.addEventListener('DOMContentLoaded', function () {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            el.classList.remove('hidden');
+
+            // Apply specific animations based on element
+            if (el.id === 'story-image') {
+              el.classList.add('animate-slide-in-left');
+            } else if (el.id === 'story-content') {
+              el.classList.add('animate-slide-in-right');
+            } else if (el.id.includes('card') || el.id.includes('feature')) {
+              el.classList.add('animate-scale-in');
+            } else {
+              el.classList.add('animate-fade-in-up');
+            }
+            observer.unobserve(el);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with hidden class
+      document.querySelectorAll('.hidden').forEach(el => {
+        observer.observe(el);
+      });
+      // Stagger animations for cards
+      const staggerElements = (selector, baseDelay = 100) => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((el, index) => {
+          el.style.animationDelay = `${index * baseDelay}ms`;
+        });
+      };
+      staggerElements('.mission-card', 150);
+      staggerElements('.team-card', 100);
+      staggerElements('.feature-card', 80);
+    });
+    
+  </script>
+</body>
+<script>
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    mobileMenuBtn.classList.toggle('active');
+  });
+</script>
+
+
+<script>
+const links = document.querySelectorAll(".nav-links a");
+const indicator = document.querySelector(".nav-links span");
+
+// Find initial active link
+let activeLink = document.querySelector(".nav-links a.active") || links[0];
+
+// Function to move the indicator under a link
+function moveIndicator(link) {
+  // Only show on desktop
+  if (window.innerWidth <= 850) {
+    indicator.style.width = "0px";
+    return;
+  }
+
+  const linkRect = link.getBoundingClientRect();
+  const parentRect = link.parentElement.getBoundingClientRect();
+
+  indicator.style.width = `${linkRect.width}px`;
+  indicator.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
+}
+
+// Initialize indicator on page load without animation
+indicator.style.transition = "none";
+window.addEventListener("DOMContentLoaded", () => {
+  moveIndicator(activeLink);
+
+  // Re-enable transition for hover/click
+  requestAnimationFrame(() => {
+    indicator.style.transition = "transform 0.3s ease, width 0.3s ease";
+  });
+});
+
+// Hover effect
+links.forEach(link => {
+  link.addEventListener("mouseenter", () => moveIndicator(link));
+  link.addEventListener("mouseleave", () => moveIndicator(activeLink));
+
+  // Click event
+  link.addEventListener("click", () => {
+    activeLink.classList.remove("active");
+    link.classList.add("active");
+    activeLink = link;
+    moveIndicator(activeLink);
+    // Link will navigate normally
+  });
+});
+
+// Recalculate indicator on window resize
+window.addEventListener("resize", () => {
+  moveIndicator(activeLink);
+});
+</script>
+
+
+
+</html>

@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - 3D PrintStudio</title>
+  <meta name="description" content="Get in touch with 3D PrintStudio. Contact us for custom 3D printing projects, quotes, and inquiries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* CSS Reset & Variables */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --background: 220 15% 8%;
+      --foreground: 60 10% 95%;
+      --card: 220 15% 12%;
+      --card-foreground: 60 10% 95%;
+      --primary: 25 95% 55%;
+      --primary-foreground: 60 10% 98%;
+      --secondary: 220 15% 18%;
+      --secondary-foreground: 60 10% 95%;
+      --muted: 220 15% 25%;
+      --muted-foreground: 220 10% 60%;
+      --accent: 25 95% 55%;
+      --accent-foreground: 60 10% 98%;
+      --border: 220 15% 20%;
+      --ring: 25 95% 55%;
+      --destructive: 0 84% 60%;
+      --success: 142 76% 36%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, hsl(25 95% 55%), hsl(35 100% 60%));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glass-card {
+      background: hsla(220, 15%, 12%, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid hsla(220, 15%, 25%, 0.5);
+      border-radius: 1rem;
+    }
+
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, hsl(25 95% 55%), hsl(35 100% 60%));
+    }
+
+    .glow-primary {
+      box-shadow: 0 0 30px hsla(25, 95%, 55%, 0.3);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
+    }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px hsla(25, 95%, 55%, 0.3); }
+      50% { box-shadow: 0 0 40px hsla(25, 95%, 55%, 0.5); }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.8s ease-out forwards;
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+       /* Particles container covers full page */
+.particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1; /* behind all content */
+  background: #0a0f1a; /* dark background, change as needed */
+}
+
+/* Each particle */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  background: #f97316; /* primary color */
+  pointer-events: none;
+  animation-name: floatParticle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Particle float animation */
+@keyframes floatParticle {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-30px) translateX(20px) scale(1.3); opacity: 0.6; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+}
+    /* Hero Section */
+    .hero {
+      padding: 10rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 100%;
+      background: radial-gradient(ellipse at center top, hsla(25, 95%, 55%, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: hsla(25, 95%, 55%, 0.1);
+      border: 1px solid hsla(25, 95%, 55%, 0.3);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      color: hsl(var(--primary));
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 4rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    /* Contact Form */
+    .form-card {
+      padding: 2rem;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: hsl(var(--foreground));
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: hsla(220, 15%, 15%, 0.8);
+      border: 1px solid hsl(var(--border));
+      border-radius: 0.5rem;
+      color: hsl(var(--foreground));
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: hsl(var(--primary));
+      box-shadow: 0 0 0 3px hsla(25, 95%, 55%, 0.2);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: hsl(var(--muted-foreground));
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+      padding-right: 3rem;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: hsl(var(--primary-foreground));
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Contact Info */
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-card {
+      padding: 2rem;
+    }
+
+    .info-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: hsl(var(--primary-foreground));
+    }
+
+    .info-content h4 {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-content p {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.9375rem;
+    }
+
+    .info-content a {
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .info-content a:hover {
+      color: hsl(var(--primary));
+    }
+
+    /* Map Placeholder */
+    .map-card {
+      padding: 1.5rem;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 250px;
+      background: hsla(220, 15%, 15%, 0.8);
+      border-radius: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: hsl(var(--muted-foreground));
+      border: 1px dashed hsl(var(--border));
+    }
+
+    .map-placeholder svg {
+      width: 3rem;
+      height: 3rem;
+      opacity: 0.5;
+    }
+
+    .map-placeholder p {
+      font-size: 0.875rem;
+    }
+
+    .map-btn {
+      padding: 0.5rem 1rem;
+      background: hsla(25, 95%, 55%, 0.1);
+      border: 1px solid hsla(25, 95%, 55%, 0.3);
+      border-radius: 0.5rem;
+      color: hsl(var(--primary));
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .map-btn:hover {
+      background: hsla(25, 95%, 55%, 0.2);
+    }
+
+    /* Business Hours */
+    .hours-card {
+      padding: 2rem;
+    }
+
+    .hours-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hours-title svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: hsl(var(--primary));
+    }
+
+    .hours-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid hsla(220, 15%, 20%, 0.5);
+    }
+
+    .hours-item:last-child {
+      border-bottom: none;
+    }
+
+    .hours-day {
+      font-weight: 500;
+    }
+
+    .hours-time {
+      color: hsl(var(--muted-foreground));
+    }
+
+    .hours-time.closed {
+      color: hsl(var(--destructive));
+    }
+
+    .hours-time.highlight {
+      color: hsl(var(--primary));
+    }
+
+    /* Social Links */
+    .social-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid hsla(220, 15%, 20%, 0.5);
+    }
+
+    .social-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      background: hsl(var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: hsl(var(--muted-foreground));
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-link:hover {
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+
+    .social-link svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .faq-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .faq-header p {
+      color: hsl(var(--muted-foreground));
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 1rem;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover {
+      border-color: hsla(25, 95%, 55%, 0.3);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-question h3 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+    }
+
+    .faq-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: hsl(var(--primary));
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s, padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding-top: 1rem;
+    }
+
+    .faq-answer p {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid hsl(var(--border));
+      padding: 4rem 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand p {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.9375rem;
+      margin-top: 1rem;
+      max-width: 20rem;
+    }
+
+    .footer-column h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: hsl(var(--primary));
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid hsl(var(--border));
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.875rem;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(150%);
+      transition: transform 0.3s ease-out;
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+    }
+
+    .toast.success {
+      background: hsl(var(--success));
+      color: white;
+    }
+
+    .toast.error {
+      background: hsl(var(--destructive));
+      color: white;
+    }
+
+    .toast svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particles-container" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">3D Studio</div>
+    <ul class="nav-links">
+      <li><a href="/html/index.html">Home</a></li>
+      <li><a href="/html/products.html">Products</a></li>
+      <li><a href="/html/services.html">Services</a></li>
+      <li><a href="/html/about.html">About</a></li>
+      <li><a href="/html/contact.html">Contact</a></li>
+    </ul>
+<div class="cart" onclick="location.href='/html/cart.html'">
+  <i class="fa-solid fa-cart-shopping"></i>
+</div>
+  </nav>
+
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content animate-fade-in-up">
+          <div class="hero-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            Get In Touch
+          </div>
+          <h1 class="font-display">Let's <span class="text-gradient">Connect</span></h1>
+          <p>Have a project in mind or questions about our services? We'd love to hear from you. Reach out and let's create something amazing together.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Form -->
+          <div class="form-card glass-card reveal">
+            <h2 class="form-title font-display">Send Us a Message</h2>
+            <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
+            
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="firstName">First Name *</label>
+                  <input type="text" id="firstName" class="form-input" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" class="form-input" placeholder="Doe" required>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 000-0000">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="service">Service Interested In</label>
+                <select id="service" class="form-select">
+                  <option value="">Select a service</option>
+                  <option value="prototyping">Rapid Prototyping</option>
+                  <option value="custom">Custom Design</option>
+                  <option value="production">Small Batch Production</option>
+                  <option value="consulting">3D Printing Consultation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="message">Your Message *</label>
+                <textarea id="message" class="form-textarea" placeholder="Tell us about your project..." required></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn bg-gradient-primary glow-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m22 2-7 20-4-9-9-4Z"></path>
+                  <path d="M22 2 11 13"></path>
+                </svg>
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info Side -->
+          <div class="info-section">
+            <!-- Contact Details -->
+            <div class="info-card glass-card reveal">
+              <h3 class="info-title font-display">Contact Information</h3>
+              <div class="info-list">
+                <div class="info-item">
+                  <div class="info-icon bg-gradient-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="info-content">
+                    <h4>Visit Our Workshop</h4>
+                    <p>123 Innovation Drive<br>Tech District, CA 94105</p>
+                  </div>
+                </div>
+                
+                <div class="info-item">
+                  <div class="info-icon bg-gradient-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </div>
+                  <div class="info-content">
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:hello@3dprintstudio.com">hello@3dprintstudio.com</a></p>
+                    <p><a href="mailto:support@3dprintstudio.com">support@3dprintstudio.com</a></p>
+                  </div>
+                </div>
+                
+                <div class="info-item">
+                  <div class="info-icon bg-gradient-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div class="info-content">
+                    <h4>Call Us</h4>
+                    <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                    <p><a href="tel:+15559876543">+1 (555) 987-6543</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="social-section">
+                <p class="social-title">Follow us on social media</p>
+                <div class="social-links">
+                  <a href="#" class="social-link" aria-label="Twitter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                    </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+                      <path d="m10 15 5-3-5-3z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="map-card glass-card reveal">
+              <div class="map-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <p>Interactive map coming soon</p>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="map-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" x2="21" y1="14" y2="3"></line>
+                  </svg>
+                  Open in Google Maps
+                </a>
+              </div>
+            </div>
+
+            <!-- Business Hours -->
+            <div class="hours-card glass-card reveal">
+              <h3 class="hours-title font-display">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Business Hours
+              </h3>
+              <div class="hours-list">
+                <div class="hours-item">
+                  <span class="hours-day">Monday - Friday</span>
+                  <span class="hours-time highlight">9:00 AM - 6:00 PM</span>
+                </div>
+                <div class="hours-item">
+                  <span class="hours-day">Saturday</span>
+                  <span class="hours-time">10:00 AM - 4:00 PM</span>
+                </div>
+                <div class="hours-item">
+                  <span class="hours-day">Sunday</span>
+                  <span class="hours-time closed">Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="faq-header reveal">
+          <h2 class="font-display">Frequently Asked <span class="text-gradient">Questions</span></h2>
+          <p>Quick answers to common questions about our services and process.</p>
+        </div>
+        
+        <div class="faq-grid">
+          <div class="faq-item glass-card reveal">
+            <div class="faq-question">
+              <h3>What file formats do you accept for 3D printing?</h3>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p>We accept STL, OBJ, 3MF, and STEP files. If you have a different format, contact us and we'll work with you to find a solution.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item glass-card reveal">
+            <div class="faq-question">
+              <h3>How long does a typical project take?</h3>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p>Turnaround time depends on project complexity. Simple prints can be ready in 24-48 hours, while complex projects may take 1-2 weeks. We'll provide an estimate during consultation.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item glass-card reveal">
+            <div class="faq-question">
+              <h3>Do you offer design services?</h3>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p>Yes! Our team includes experienced 3D designers who can help bring your ideas to life, from initial concept sketches to production-ready 3D models.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item glass-card reveal">
+            <div class="faq-question">
+              <h3>What materials are available?</h3>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p>We offer a wide range of materials including PLA, ABS, PETG, TPU (flexible), resin, nylon, and specialty materials. Contact us to discuss the best option for your project.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item glass-card reveal">
+            <div class="faq-question">
+              <h3>Do you ship internationally?</h3>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p>Yes, we ship worldwide! Shipping costs and delivery times vary by location. We'll provide shipping options and quotes during the order process.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <div class="logo-icon bg-gradient-primary font-display">3D</div>
+            <span class="logo-text font-display">Print<span>Studio</span></span>
+          </a>
+          <p>Transforming ideas into reality through precision 3D printing and innovative design solutions.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">Rapid Prototyping</a></li>
+            <li><a href="#">Custom Design</a></li>
+            <li><a href="#">Small Batch Production</a></li>
+            <li><a href="#">3D Scanning</a></li>
+            <li><a href="#">Consultation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 3D PrintStudio. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMessage">Message sent successfully!</span>
+  </div>
+  <script>
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    mobileMenuBtn.classList.toggle('active');
+  });
+</script>
+  <script>
+const particlesContainer = document.getElementById('particles');
+const particleCount = 50; // adjust as needed
+
+for (let i = 0; i < particleCount; i++) {
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+
+  // Random position
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.top = Math.random() * 100 + '%';
+
+  // Random size
+  const size = Math.random() * 4 + 2;
+  particle.style.width = size + 'px';
+  particle.style.height = size + 'px';
+
+  // Random animation duration and delay
+  particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
+  particle.style.animationDelay = (Math.random() * 6) + 's';
+
+  // Append to container
+  particlesContainer.appendChild(particle);
+}
+
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          otherItem.classList.remove('open');
+        });
+        
+        // Toggle current item
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+
+    // Toast Notification
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      
+      toastMessage.textContent = message;
+      toast.className = 'toast ' + type;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Basic validation
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (!firstName || !lastName || !email || !message) {
+        showToast('Please fill in all required fields.', 'error');
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showToast('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      // Simulate form submission
+      showToast('Message sent successfully! We\'ll get back to you soon.');
+      contactForm.reset();
+    });
+  </script>
+  <script>
+const links = document.querySelectorAll(".nav-links a");
+const indicator = document.querySelector(".nav-links span");
+
+// Find initial active link
+let activeLink = document.querySelector(".nav-links a.active") || links[0];
+
+// Function to move the indicator under a link
+function moveIndicator(link) {
+  // Only show on desktop
+  if (window.innerWidth <= 850) {
+    indicator.style.width = "0px";
+    return;
+  }
+
+  const linkRect = link.getBoundingClientRect();
+  const parentRect = link.parentElement.getBoundingClientRect();
+
+  indicator.style.width = `${linkRect.width}px`;
+  indicator.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
+}
+
+// Initialize indicator on page load without animation
+indicator.style.transition = "none";
+window.addEventListener("DOMContentLoaded", () => {
+  moveIndicator(activeLink);
+
+  // Re-enable transition for hover/click
+  requestAnimationFrame(() => {
+    indicator.style.transition = "transform 0.3s ease, width 0.3s ease";
+  });
+});
+
+// Hover effect
+links.forEach(link => {
+  link.addEventListener("mouseenter", () => moveIndicator(link));
+  link.addEventListener("mouseleave", () => moveIndicator(activeLink));
+
+  // Click event
+  link.addEventListener("click", () => {
+    activeLink.classList.remove("active");
+    link.classList.add("active");
+    activeLink = link;
+    moveIndicator(activeLink);
+    // Link will navigate normally
+  });
+});
+
+// Recalculate indicator on window resize
+window.addEventListener("resize", () => {
+  moveIndicator(activeLink);
+});
+</script>
+
+
+
+</body>
+</html>

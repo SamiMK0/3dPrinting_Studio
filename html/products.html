@@ -1,0 +1,208 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Print Studio • Products</title>
+  <link rel="stylesheet" href="/css/styled.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">3D Studio</div>
+    <ul class="nav-links">
+      <li><a href="/html/index.html">Home</a></li>
+      <li><a href="/html/products.html">Products</a></li>
+      <li><a href="/html/services.html">Services</a></li>
+      <li><a href="/html/about.html">About</a></li>
+      <li><a href="/html/contact.html">Contact</a></li>
+    </ul>
+<div class="cart" onclick="location.href='/html/cart.html'">
+  <i class="fa-solid fa-cart-shopping"></i>
+</div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div id="hero-3d-object"></div>
+
+    <!-- Canvas for 3D-like rotating text -->
+    <canvas id="heroCanvas" width="1200" height="300"></canvas>
+  </header>
+
+  <!-- FILTERS -->
+  <section class="filters">
+    <button class="filter-btn active" data-category="all"><i class="fa-solid fa-layer-group"></i> All Products</button>
+    <button class="filter-btn" data-category="functional"><i class="fa-solid fa-cogs"></i> Functional Items</button>
+    <button class="filter-btn" data-category="custom"><i class="fa-solid fa-gift"></i> Custom Gifts</button>
+    <button class="filter-btn" data-category="prototypes"><i class="fa-solid fa-flask"></i> Prototypes & Parts</button>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products"></section>
+
+  <!-- FOOTER -->
+ <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <div class="logo-icon bg-gradient-primary font-display">3D</div>
+            <span class="logo-text font-display">Print<span>Studio</span></span>
+          </a>
+          <p>Transforming ideas into reality through precision 3D printing and innovative design solutions.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">Rapid Prototyping</a></li>
+            <li><a href="#">Custom Design</a></li>
+            <li><a href="#">Small Batch Production</a></li>
+            <li><a href="#">3D Scanning</a></li>
+            <li><a href="#">Consultation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 3D PrintStudio. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Products & Filters -->
+  <script src="../js/app.js"></script>
+
+  <!-- Canvas 3D Text Script -->
+  <script>
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let angle = 0;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate(Math.sin(angle) * 0.05); // subtle rotation
+
+      ctx.font = 'bold 100px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Shadow for 3D depth
+      ctx.shadowColor = 'rgba(0,0,0,0.7)';
+      ctx.shadowOffsetX = 5;
+      ctx.shadowOffsetY = 5;
+      ctx.shadowBlur = 10;
+
+      // Gradient color
+      const gradient = ctx.createLinearGradient(-600, 0, 600, 0);
+      gradient.addColorStop(0.5,'#ffffff');
+      gradient.addColorStop(0, '#ff6b00');
+      gradient.addColorStop(1, '#ff6b00');
+      ctx.fillStyle = gradient;
+
+      ctx.fillText('3D Printing by Mirvat', 0, 0);
+      ctx.restore();
+
+      angle += 0.02;
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    // Make canvas responsive
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth * 0.95;
+      canvas.height = 300;
+    });
+  </script>
+  <!-- THREE.JS FLOATING OBJECT -->
+<script>
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
+camera.position.z = 4;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(250, 250);
+document.getElementById("hero-3d-object").appendChild(renderer.domElement);
+
+const geometry = new THREE.BoxGeometry(1.2, 1.2, 1.2);
+const material = new THREE.MeshStandardMaterial({
+  color: 0xff6b00,
+  metalness: 0.6,
+  roughness: 0.3
+});
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+const light = new THREE.PointLight(0xffffff, 1.2);
+light.position.set(5, 5, 5);
+scene.add(light);
+
+let t = 0;
+function animate() {
+  requestAnimationFrame(animate);
+  t += 0.02;
+
+  cube.rotation.y += 0.01;
+  cube.rotation.x += 0.005;
+  cube.position.y = Math.sin(t) * 0.3;
+
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+
+</body>
+</html>
