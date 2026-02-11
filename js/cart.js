@@ -97,4 +97,4 @@ function sendOrderToWhatsApp() {
 
   window.open(url, "_blank");
 }
-document.getElementById("checkout-btn").addEventListener("click", sendOrderToWhatsApp);
+document.getElementById("Checkout").addEventListener("click", sendOrderToWhatsApp);
